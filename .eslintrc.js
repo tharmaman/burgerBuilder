@@ -20,16 +20,16 @@ module.exports = {
         // allow console.log for debugger
         "no-console": 0,
 
-        // disable prop types
-        "react/prop-types": 0,
-
-        // disable camel case
-        "camelcase": 0,
-
         // disable prefer export default
         "import/prefer-default-export": 0,
 
-        // remove no-shadow
-        "no-shadow": 0,
+        // disable prop type validation
+        "react/prop-types": 0,
+
+        // local variable shares the same name as another variable in containing scope
+        // "no-shadow": 0,
+
+        // disable camel case
+        // "camelcase": 0,
     },
 };
