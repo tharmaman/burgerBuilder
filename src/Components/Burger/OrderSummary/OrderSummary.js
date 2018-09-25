@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Aux from '../../../hocs/Aux';
 
 // eslint-disable-next-line
@@ -26,6 +25,8 @@ const orderSummary = props => {
                 {ingredientSummary}
             </ul>
             <p>Continue to Checkout?</p>
+            <button>CANCEL</button>
+            <button>CONTINUE</button>
         </Aux>
     );
 };
