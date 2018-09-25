@@ -11,10 +11,15 @@ const controls = [
 ];
 
 const buildControls = props => (
-    <div className={classes.buildControls}>
+    <div className={classes.BuildControls}>
+        {/* props.ingredientAdded passed down from BurgerBuilder */}
         {controls.map(ctrl => (
             // eslint-disable-next-line
-            <BuildControl key={ctrl.label} label={ctrl.label} />
+            <BuildControl 
+                key={ctrl.label}
+                label={ctrl.label}
+                added={() => props.ingredientAdded(ctrl.type)}
+            />
         ))}
     </div>
 );

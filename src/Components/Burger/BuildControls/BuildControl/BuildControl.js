@@ -9,7 +9,11 @@ const buildControl = props => (
         <button className={classes.Less}>
             Less
         </button>
-        <button className={classes.More}>
+        {/* props.added passed down from build controls */}
+        <button
+            className={classes.More}
+            onClick={props.added}
+        >
             More
         </button>
     </div>
