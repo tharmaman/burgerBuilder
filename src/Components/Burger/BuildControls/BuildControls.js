@@ -12,6 +12,10 @@ const controls = [
 
 const buildControls = props => (
     <div className={classes.BuildControls}>
+        <p>
+            {/* eslint-disable-next-line */}
+            Current Price: <strong>{props.price.toFixed(2)}</strong>
+        </p>
         {/* props.ingredientAdded passed down from BurgerBuilder */}
         {controls.map(ctrl => (
             // eslint-disable-next-line
