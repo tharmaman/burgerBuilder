@@ -6,7 +6,11 @@ const buildControl = props => (
         <div className={classes.Label}>
             {props.label}
         </div>
-        <button className={classes.Less}>
+        <button
+            className={classes.Less}
+            onClick={props.removed}
+            disabled={props.disabled}
+        >
             Less
         </button>
         {/* props.added passed down from build controls */}
