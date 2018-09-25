@@ -10,7 +10,6 @@
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
-    /* backdrop should go above so this is below 100 */
     z-index: 90;
 }
 
