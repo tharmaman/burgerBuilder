@@ -4,11 +4,13 @@ import Aux from '../../../hocs/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
+    // only update component if the show state changes
+    // but with the spinner, the props.children changes
     shouldComponentUpdate(nextProps) {
         console.log('Modal] shouldUpdate');
         console.log(nextProps.show);
         console.log(this.props.show);
-        return nextProps.show !== this.props.show;
+        return nextProps.show !== this.props.show || (nextProps.children !== this.props.children);
     }
 
     componentWillUpdate() {
