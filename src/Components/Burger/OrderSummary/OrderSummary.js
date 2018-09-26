@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../../hocs/Aux';
+import Aux from '../../../hocs/Aux/Aux';
 import Button from '../../UI/Button/Button';
 
 // eslint-disable-next-line
