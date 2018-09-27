@@ -3,28 +3,29 @@ import { Route } from 'react-router-dom';
 
 import CheckoutSummary from '../../Components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
-import classes from './ContactData/ContactData.css';
 
 class Checkout extends Component {
     state = {
-        ingredients: {
-            salad: 1,
-            meat: 1,
-            cheese: 1,
-            bacon: 1,
-        },
+        ingredients: null,
+        price: 0,
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const query = new URLSearchParams(this.props.location.search);
         const ingredients = {};
+        let price = 0;
         // eslint-disable-next-line
         for (let param of query.entries()){
             // ['salad', '1']
-            ingredients[param[0]] = +param[1]; // convert to number by adding +
+            if (param[0] === 'price') {
+                price = param[1];
+            } else {
+                ingredients[param[0]] = +param[1]; // convert to number by adding +
+            }
         }
         this.setState({
             ingredients,
+            price,
         });
     }
 
@@ -38,13 +39,22 @@ class Checkout extends Component {
 
     render() {
         return (
-            <div className={classes.ContactData}>
+            <div>
                 <CheckoutSummary
                     ingredients={this.state.ingredients}
                     checkoutCancelled={this.checkoutCancelledHandler}
                     checkoutContinued={this.checkoutContinuedHandler}
                 />
-                <Route path={`${this.props.match.path}/contact-data`} component={ContactData} />
+                <Route
+                    path={`${this.props.match.path}/contact-data`}
+                    render={props => (
+                        <ContactData
+                            ingredients={this.state.ingredients}
+                            price={this.state.price}
+                            {...props}
+                        />
+                    )}
+                />
             </div>
         );
     }
