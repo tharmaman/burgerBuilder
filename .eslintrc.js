@@ -30,8 +30,11 @@ module.exports = {
         // must use destructuring props assignment
         "react/destructuring-assignment": 0,
 
-        //missing an explicit type attribute for button
+        // missing an explicit type attribute for button
         "react/button-has-type": 0,
+
+        // string must use singlequote
+        // "quotes": 0,
 
         // local variable shares the same name as another variable in containing scope
         // "no-shadow": 0,
