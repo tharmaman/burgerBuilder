@@ -52,10 +52,6 @@ class ContactData extends Component {
             });
     }
 
-    orderHandler = () => {
-        
-    }
-
     render() {
         let form = (
             <form>
