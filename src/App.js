@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import Layout from './hocs/Layout/Layout';
 import BurgerBuilder from './Containers/BurgerBuilder/BurgerBuilder';
+import Checkout from './Containers/Checkout/Checkout';
 
 // eslint-disable-next-line
 class App extends Component {
@@ -20,7 +23,10 @@ class App extends Component {
         return (
             <div>
                 <Layout>
-                    <BurgerBuilder />
+                    <Switch>
+                        <Route path="/checkout" component={Checkout} />
+                        <Route path="/" exact component={BurgerBuilder} />
+                    </Switch>
                 </Layout>
             </div>
         );
