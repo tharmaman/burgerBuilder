@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Button from '../../../Components/UI/Button/Button';
 import Spinner from '../../../Components/UI/Spinner/Spinner';
@@ -101,16 +102,16 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault();
-        console.log(this.props.ingredients);
+        console.log(this.props.ings);
         this.setState({
             loading: true,
         });
         const formData = {};
-        for (let formElementIdentifier in this.state.orderForm) {
+        for (const formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
         const order = {
-            ingredients: this.props.ingredients,
+            ingredients: this.props.ings,
             price: this.props.price,
             orderData: formData,
         };
@@ -136,7 +137,7 @@ class ContactData extends Component {
         if (!rules) {
             return true;
         }
-        
+
         if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
@@ -169,14 +170,14 @@ class ContactData extends Component {
         updatedOrderForm[inputID] = updatedFormElement;
 
         let formIsValid = true;
-        for (let inputIdentifier in updatedOrderForm) {
+        for (const inputIdentifier in updatedOrderForm) {
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
         }
         console.log(formIsValid);
 
         this.setState({
             orderForm: updatedOrderForm,
-            formIsValid: formIsValid,
+            formIsValid,
         });
     }
 
@@ -225,4 +226,9 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+const mapStateToProps = state => ({
+    ings: state.ingredients,
+    price: state.totalPrice,
+});
+
+export default connect(mapStateToProps)(ContactData);
