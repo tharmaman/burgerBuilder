@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Aux from '../../hocs/Aux/Aux';
+import axios from '../../axios-orders';
 import Burger from '../../Components/Burger/Burger';
 import BuildControls from '../../Components/Burger/BuildControls/BuildControls';
 import Modal from '../../Components/UI/Modal/Modal';
 import OrderSummary from '../../Components/Burger/OrderSummary/OrderSummary';
-import axios from '../../axios-orders'; // our axios instance to firebase
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hocs/withErrorHandler/withErrorHandler';
 import * as burgerBuilderActions from '../../store/actions';
@@ -15,8 +15,11 @@ class BurgerBuilder extends Component {
     // declaring state using modern tings
     state = {
         purchasing: false,
-        loading: false,
-        error: false,
+    }
+
+    componentDidMount() {
+        console.log(this.props);
+        this.props.onInitIngredients();
     }
 
     updatePurchaseState = (ingredients) => {
@@ -56,11 +59,7 @@ class BurgerBuilder extends Component {
         }
 
         let orderSummary = null;
-        let burger = this.state.error ? <p>Ingredients cannot be loaded!</p> : <Spinner />;
-
-        if (this.state.loading) {
-            orderSummary = <Spinner />;
-        }
+        let burger = this.props.error ? <p>Ingredients cannot be loaded!</p> : <Spinner />;
 
         if (this.props.ings) {
             burger = (
@@ -103,11 +102,13 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => ({
     ings: state.ingredients,
     price: state.totalPrice,
+    error: state.error,
 });
 
 const mapDispatchToProps = dispatch => ({
     onIngredientAdded: ingName => dispatch(burgerBuilderActions.addIngredient(ingName)),
     onIngredientRemoved: ingName => dispatch(burgerBuilderActions.removeIngredient(ingName)),
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
