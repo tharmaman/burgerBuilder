@@ -41,5 +41,11 @@ module.exports = {
 
         // disable camel case
         // "camelcase": 0,
+
+        // Unexpected lexical declaration in case block.
+        "no-case-declarations": 0,
+
+        // Line 20 exceeds the maximum line length of 100.
+        "max-len": 0,
     },
 };
