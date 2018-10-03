@@ -18,8 +18,6 @@ export const purchaseBurgerStart = () => ({
 
 export const purchaseBurger = (orderData, token) => (dispatch) => {
     dispatch(purchaseBurgerStart());
-    console.log("INSIDE purchaseBurger");
-    console.log(token);
     axios.post(`/orders.json?auth=${token}`, orderData) // for firebase always remember .json
         .then((response) => {
             console.log(response.data);
