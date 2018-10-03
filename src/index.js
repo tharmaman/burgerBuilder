@@ -7,9 +7,14 @@ import { createStore } from 'redux';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import reducer from './store/reducer';
+import reducer from './store/reducers/reducer';
 
-const store = createStore(reducer);
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+    reducer, /* preloadedState, */
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+/* eslint-enable */
 
 const app = (
     <Provider store={store}>

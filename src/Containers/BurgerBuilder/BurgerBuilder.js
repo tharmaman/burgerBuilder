@@ -9,7 +9,7 @@ import OrderSummary from '../../Components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders'; // our axios instance to firebase
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hocs/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 class BurgerBuilder extends Component {
     // declaring state using modern tings
