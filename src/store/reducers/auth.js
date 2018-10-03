@@ -22,9 +22,7 @@ const authFail = (state, action) => updateObject(state, {
     loading: false,
 });
 
-const authLogout = (state, action) => {
-    return updateObject(state, { token: null, userId: null, });
-};
+const authLogout = (state, action) => updateObject(state, { token: null, userId: null });
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
