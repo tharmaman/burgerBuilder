@@ -9,7 +9,7 @@ import OrderSummary from '../../Components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders'; // our axios instance to firebase
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hocs/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions/actionTypes';
+import * as burgerBuilderActions from '../../store/actions';
 
 class BurgerBuilder extends Component {
     // declaring state using modern tings
@@ -106,14 +106,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onIngredientAdded: ingName => dispatch({
-        type: actionTypes.ADD_INGREDIENTS,
-        ingredientName: ingName,
-    }),
-    onIngredientRemoved: ingName => dispatch({
-        type: actionTypes.ADD_INGREDIENTS,
-        ingredientName: ingName,
-    }),
+    onIngredientAdded: ingName => dispatch(burgerBuilderActions.addIngredient(ingName)),
+    onIngredientRemoved: ingName => dispatch(burgerBuilderActions.removeIngredient(ingName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
