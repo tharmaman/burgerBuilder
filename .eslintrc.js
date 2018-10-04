@@ -3,7 +3,9 @@ module.exports = {
     "extends": "airbnb",
     "env": {
         "browser": true,
-        "node": true
+        "node": true,
+        "jest": true,
+        "es6": true,
     },
     "rules": {
         // remove random jsx error
