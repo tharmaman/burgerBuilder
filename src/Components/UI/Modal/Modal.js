@@ -7,12 +7,7 @@ class Modal extends Component {
     // only update component if the show state changes
     // but with the spinner, the props.children changes
     shouldComponentUpdate(nextProps) {
-        console.log('Modal] shouldUpdate');
         return nextProps.show !== this.props.show || (nextProps.children !== this.props.children);
-    }
-
-    componentWillUpdate() {
-        console.log('[Modal] WillUpdate');
     }
 
     render() {
