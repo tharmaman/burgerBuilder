@@ -38,9 +38,9 @@ export const auth = (email, password, isSignup) => (dispatch) => {
         password,
         returnSecureToken: true,
     };
-    let endPoint = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB7gxzpSxYxO9zibnCNl7eU4OnFgvGXlBY';
+    let endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${process.env.REACT_APP_AUTH_KEY}`;
     if (!isSignup) {
-        endPoint = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB7gxzpSxYxO9zibnCNl7eU4OnFgvGXlBY';
+        endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${process.env.REACT_APP_AUTH_KEY}`;
     }
     axios.post(endPoint, authData)
         .then((res) => {
